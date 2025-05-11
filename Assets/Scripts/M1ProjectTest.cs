@@ -9,8 +9,10 @@ using JetBrains.Annotations;
 public class M1ProjectTest : MonoBehaviour
 {
     [SerializeField] Hero a = new Hero("Banfi", 100, new Stats(20, 12, 5, 8, 10, 75, 5), ELEMENT.VOID, ELEMENT.ICE, new Weapon("VoidGun", Weapon.DAMAGE_TYPE.MAGICAL, ELEMENT.VOID, new(2, 1, 5, 3, 1, 5, 2)));
-    [SerializeField] Hero b = new Hero("Boldi", 100, new Stats(19, 20, 7, 3, 11, 70, 5), ELEMENT.LIGHTNING, ELEMENT.FIRE, new Weapon("TATATATA", Weapon.DAMAGE_TYPE.PHYSICAL, ELEMENT.LIGHTNING, new(2, 5, 1, 3, 5, 1, 2)));
-    
+    // [SerializeField] Hero b = new Hero("Boldi", 100, new Stats(19, 20, 7, 3, 11, 70, 5), ELEMENT.LIGHTNING, ELEMENT.FIRE, new Weapon("TATATATA", Weapon.DAMAGE_TYPE.PHYSICAL, ELEMENT.LIGHTNING, new(2, 5, 1, 3, 5, 1, 2)));
+    [SerializeField] Hero b = new Hero("Boldi", 100, new Stats(19, 20, 7, 3, 11, 70, 5), ELEMENT.LIGHTNING, ELEMENT.FIRE, new Weapon()); // qiì provo ad utilizzare il costruttore di default Mani Nude 
+
+
     private bool gameEnded = false;
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,7 @@ public class M1ProjectTest : MonoBehaviour
             return;
         }
 
-        Stats weaponStatsA = a.Weapon != null ? a.Weapon.BonusStats : new Stats(); // Scontrollo se non ci sono armi
+        Stats weaponStatsA = a.Weapon != null ? a.Weapon.BonusStats : new Stats(); // controllo se non ci sono armi, se non ci sono armi new Stats() crea lo struct di deafult con tutti valori a 0
         Stats TotalA = Stats.Sum(a.BaseStats, weaponStatsA);
 
         Stats weaponStatsB = b.Weapon != null ? b.Weapon.BonusStats : new Stats();

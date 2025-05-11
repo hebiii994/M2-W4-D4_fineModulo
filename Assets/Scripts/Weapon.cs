@@ -22,10 +22,24 @@ public Weapon (string name, DAMAGE_TYPE dmgType, ELEMENT elem, Stats bonusStats)
         this.bonusStats = bonusStats;
     }
 
+public Weapon()
+    {
+        name = "Mani nude";
+        dmgType = DAMAGE_TYPE.PHYSICAL;
+        elem = ELEMENT.NONE;
+        bonusStats = new Stats();
+    }
+
     // uso properties
     public string Name {
         get {return name;}
-        set {name = value;}
+        set 
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                name = value;
+            }
+        }
     }
     public DAMAGE_TYPE DmgType
     {
